@@ -1,0 +1,13 @@
+[package]
+name = "kaspa-chess-guest"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+risc0-zkvm = { workspace = true, features = ["std"] }
+serde = { workspace = true }
+kaspa-chess-core = { path = "../core" }
+
+[[bin]]
+name = "kaspa_chess_guest"
+path = "src/main.rs"

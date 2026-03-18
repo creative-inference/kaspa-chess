@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaspa Chess — Trustless on TN12</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>KASPA CHESS</h1>
+    <p class="subtitle">Trustless &mdash; KIP-16 ZK-verified moves on Kaspa TN12</p>
+
+    <div class="game-container">
+        <div class="board-wrap">
+            <div class="board" id="board"></div>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel">
+                <h2>Game Status</h2>
+                <div class="status-line">Turn: <span id="turn">White</span><span id="check-status" style="color:#ff6b6b"></span></div>
+                <div class="status-line" id="proof-status" style="font-size:0.75rem;color:var(--muted)">Proof: local only — wire Kaspa RPC to submit</div>
+                <div class="proof-bar"><div class="proof-bar-fill" id="proof-fill"></div></div>
+            </div>
+
+            <div class="panel">
+                <h2>Captured</h2>
+                <div style="margin-bottom:0.4rem;font-size:0.65rem;color:var(--muted)">WHITE PIECES</div>
+                <div class="captured" id="captured-white"></div>
+                <div style="margin:0.5rem 0 0.4rem;font-size:0.65rem;color:var(--muted)">BLACK PIECES</div>
+                <div class="captured" id="captured-black"></div>
+            </div>
+
+            <div class="panel">
+                <h2>Move History</h2>
+                <div class="move-history" id="move-history"></div>
+            </div>
+
+            <button class="btn" id="btn-new">New Game</button>
+
+            <div class="network-badge">
+                <span class="dot"></span>Kaspa TN12 &mdash; KIP-16 active
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotion modal -->
+    <div class="modal-overlay" id="promo-modal">
+        <div class="modal">
+            <h3>Promote Pawn</h3>
+            <div class="promo-choices">
+                <button class="promo-btn" id="promo-q" data-piece="5">♕</button>
+                <button class="promo-btn" id="promo-r" data-piece="4">♖</button>
+                <button class="promo-btn" id="promo-b" data-piece="3">♗</button>
+                <button class="promo-btn" id="promo-n" data-piece="2">♘</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>
