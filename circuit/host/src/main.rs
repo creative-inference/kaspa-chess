@@ -23,7 +23,10 @@ const CHESS_GUEST_ID: [u32; 8] = [0u32; 8]; // replaced by risc0-build
 fn main() -> anyhow::Result<()> {
     let args: Vec<String> = std::env::args().collect();
 
-    // Quick CLI: read state + move from JSON files passed as args
+    // CLI: read state + move from JSON files
+    // Usage: kaspa-chess-host [state.json] [move.json]
+    // state.json includes chess state only (board, castling, ep_square, white_to_move)
+    // Player pubkeys and metadata are in the UTXO data but not part of the ZK proof
     let state_path = args.get(1).map(PathBuf::from)
         .unwrap_or_else(|| PathBuf::from("state.json"));
     let move_path = args.get(2).map(PathBuf::from)

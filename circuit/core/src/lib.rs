@@ -13,6 +13,9 @@ use serde::{Deserialize, Serialize};
 
 // ---- Types ----
 
+/// Full multiplayer game state — matches UTXO data layout
+/// Chess state portion [0..68] is what the ZK proof covers.
+/// Player identity [69..132] and metadata [133..136] are checked by the covenant.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct GameState {
     pub board: [u8; 64],
